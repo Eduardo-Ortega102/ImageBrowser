@@ -1,6 +1,6 @@
 package imagebrowser.persistence;
 
-import imagebrowser.persistence.abstractInterface.BitmapCreator;
+import imagebrowser.persistence.abstractInterface.BitmapFactory;
 import imagebrowser.persistence.abstractInterface.ImageLoader;
 import imagebrowser.model.Image;
 import imagebrowser.model.RealImage;
@@ -8,15 +8,15 @@ import imagebrowser.model.RealImage;
 public class FileImageLoader implements ImageLoader {
 
     private String filename;
-    private BitmapCreator creator;
+    private BitmapFactory factory;
 
-    public FileImageLoader(String filename, BitmapCreator creator) {
+    public FileImageLoader(String filename, BitmapFactory factory) {
         this.filename = filename;
-        this.creator = creator;
+        this.factory = factory;
     }
 
     @Override
     public Image load() {
-        return new RealImage(creator.create(filename));
+        return new RealImage(factory.createBitmap(filename));
     }
 }

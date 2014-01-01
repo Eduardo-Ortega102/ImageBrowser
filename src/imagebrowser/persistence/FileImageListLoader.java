@@ -1,7 +1,7 @@
 package imagebrowser.persistence;
 
 import imagebrowser.model.Image;
-import imagebrowser.persistence.abstractInterface.BitmapCreator;
+import imagebrowser.persistence.abstractInterface.BitmapFactory;
 import imagebrowser.persistence.abstractInterface.ImageListLoader;
 import java.io.File;
 import java.util.*;
@@ -9,12 +9,12 @@ import java.util.*;
 public class FileImageListLoader implements ImageListLoader {
 
     private final String path;
-    private final BitmapCreator creator;
+    private final BitmapFactory factory;
     private final ArrayList<String> formatList;
 
-    public FileImageListLoader(String path, BitmapCreator creator) {
+    public FileImageListLoader(String path, BitmapFactory factory) {
         this.path = path;
-        this.creator = creator;
+        this.factory = factory;
         this.formatList = new ArrayList<>(Arrays.asList(new String[]{
             ".bmp", ".dib", ".jpg", ".jpeg", ".jpe", ".jfif", ".png"}));
     }
@@ -39,7 +39,7 @@ public class FileImageListLoader implements ImageListLoader {
     private ProxyImage[] createProxies(String[] fileNameList) {
         ProxyImage[] proxyList = new ProxyImage[fileNameList.length];
         for (int index = 0; index < proxyList.length; index++)
-            proxyList[index] = new ProxyImage(new FileImageLoader(path + "\\" + fileNameList[index], creator));
+            proxyList[index] = new ProxyImage(new FileImageLoader(path + "\\" + fileNameList[index], factory));
         return proxyList;
     }
 

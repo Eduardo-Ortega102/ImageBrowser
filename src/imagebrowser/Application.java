@@ -5,7 +5,7 @@ import imagebrowser.control.NextImageCommand;
 import imagebrowser.control.PrevImageCommand;
 import imagebrowser.model.Bitmap;
 import imagebrowser.model.Image;
-import imagebrowser.persistence.abstractInterface.BitmapCreator;
+import imagebrowser.persistence.abstractInterface.BitmapFactory;
 import imagebrowser.persistence.FileImageListLoader;
 import imagebrowser.persistence.abstractInterface.ImageListLoader;
 import imagebrowser.ui.ApplicationFrame;
@@ -27,9 +27,10 @@ public class Application {
     }
 
     private static ImageListLoader createImageListLoader() {
-        return new FileImageListLoader(PATH, new BitmapCreator<String>() {
+        return new FileImageListLoader(PATH, new BitmapFactory<String>() {
             @Override
-            public Bitmap create(String input) {
+            public Bitmap createBitmap(String input) {
+                System.out.println("creando: " + input);
                 return new SwingBitmap(input);
             }
         });
