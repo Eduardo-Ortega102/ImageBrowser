@@ -28,6 +28,6 @@ public class RealImage implements Image {
 
     @Override
     public Bitmap getBitmap() {
-        return bitMap;
+        return this.bitmap;
     }
 }
