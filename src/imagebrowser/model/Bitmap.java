@@ -1,7 +1,7 @@
 package imagebrowser.model;
 
-public interface Bitmap<A>{
+public interface Bitmap<Attribute>{
 
-    public A getImage();
+    public Attribute getImage();
         
 }
