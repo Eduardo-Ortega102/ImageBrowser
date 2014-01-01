@@ -2,10 +2,10 @@ package imagebrowser.model;
 
 public class RealImage implements Image {
 
-    private Bitmap bitMap;
+    private Bitmap bitmap;
 
     public RealImage(Bitmap bitmap) {
-        bitMap = bitmap;
+        this.bitmap = bitmap;
     }
 
     @Override
